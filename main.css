@@ -1,172 +1,357 @@
-.jumbotron {
-    display: table;
-    height: 100vh;
-    width: 100%;
-    margin: 0px 0px 0px 0px;
-    text-align: center;
-    background: #1377B0;
-    z-index: 100;
-    color: #fff;
+@media screen and (min-width: 600px) {
+    .jumbotron {
+        display: table;
+        height: 100vh;
+        width: 100%;
+        margin: 0px 0px 0px 0px;
+        text-align: center;
+        background: #1377B0;
+        z-index: 100;
+        color: #fff;
+    }
+
+    .jumbotron .container {
+        display: table-cell;
+        vertical-align: middle;
+    }
+
+    .container svg {
+        height: 30vh;
+        margin: 0px 0px 0px 0px;
+        fill-opacity: 0;
+        -webkit-animation: fillOpacity 1s 2.5s ease-out 1;
+        animation: fillOpacity 1s 2.5s ease-out 1;
+    }
+
+    #screenCase, #Bottom, #Screen {
+        stroke-dasharray: 2027.109619140625;
+        stroke-dashoffset: 2027.109619140625;
+        -webkit-animation: screenDash 3s ease-in infinite alternate;
+        animation: screenDash 3s ease-in infinite alternate;
+    }
+
+
+    @keyframes screenDash {
+      from {
+        stroke-dashoffset: 2027.109619140625;
+      }
+      to {
+        stroke-dashoffset: 0;
+      }
+    }
+
+    @-webkit-keyframes screenDash {
+      from {
+        stroke-dashoffset: 2027.109619140625;
+      }
+      to {
+        stroke-dashoffset: 0;
+      }
+    }
+
+    #t, #h, #i, #n, #g, #Bass {
+        stroke-dasharray: 735.111572265625;
+        stroke-dashoffset: 735.111572265625;
+        -webkit-animation: thingDash 3s ease-in infinite alternate;
+        animation: thingDash 3s ease-in infinite alternate;
+    }
+
+
+    @keyframes thingDash {
+      from {
+        stroke-dashoffset: 735.111572265625;
+      }
+      to {
+        stroke-dashoffset: 0;
+      }
+    }
+
+    @-webkit-keyframes thingDash {
+      from {
+        stroke-dashoffset: 735.111572265625;
+      }
+      to {
+        stroke-dashoffset: 0;
+      }
+    }
+
+    #iDot, #ellipsis-1, #ellipsis-2, #ellipsis-3 {
+        stroke-dasharray: 32.8542361247513;
+        stroke-dashoffset: 32.8542361247513;
+        -webkit-animation: dotDash 3s ease-in infinite alternate;
+        animation: dotDash 3s ease-in infinite alternate;
+    }
+
+
+    @keyframes dotDash {
+      from {
+        stroke-dashoffset: 32.8542361247513;
+      }
+      to {
+        stroke-dashoffset: 0;
+      }
+    }
+
+    @-webkit-keyframes dotDash {
+      from {
+        stroke-dashoffset: 32.8542361247513;
+      }
+      to {
+        stroke-dashoffset: 0;
+      }
+    }
+
+    #Support {
+        stroke-dasharray: 492.7215576171875;
+        stroke-dashoffset: 492.7215576171875;
+        -webkit-animation: baseDash 3s ease-in infinite alternate;
+        animation: baseDash 3s ease-in infinite alternate;
+    }
+
+
+    @keyframes baseDash {
+      from {
+        stroke-dashoffset: 492.7215576171875;
+      }
+      to {
+        stroke-dashoffset: 0;
+      }
+    }
+
+    @-webkit-keyframes baseDash {
+      from {
+        stroke-dashoffset: 492.7215576171875;
+      }
+      to {
+        stroke-dashoffset: 0;
+      }
+    }
+
+    @keyframes fillOpacity {
+      from {
+        fill-opacity: 0;
+        stroke-opacity: 1;
+      }
+      to {
+        fill-opacity: 1;
+        stroke-opacity: 0;
+      }
+    }
+
+    @-webkit-keyframes fillOpacity {
+      from {
+        fill-opacity: 0;
+        stroke-opacity: 1;
+      }
+      to {
+        fill-opacity: 1;
+        stroke-opacity: 0;
+      }
+    }
+
+    .filled .container svg {
+        fill-opacity: 1;
+        stroke-opacity: 0;
+    }
+
+    .sub-head {
+        overflow: visible;
+        text-align: center;
+        width: 100%;
+        height: 100vh;
+        background: #1377B0;
+    }
+
+    .sub-head .box{
+        opacity: 0;
+        transition: opacity 1s .3s linear;
+    }
+
+    .sub-head svg {
+        width: 77px;
+        height: 77px;
+    }
+
+    .sub-head svg #Round{
+        fill: rgba(255, 255, 255, 0.28);
+    }
+
+    .check .sub-head .box{
+        opacity: 1;
+    }
+
 }
-
-.jumbotron .container {
-    display: table-cell;
-    vertical-align: middle;
-}
-
-.container svg {
-    height: 30vh;
-    margin: 0px 0px 0px 0px;
-    fill-opacity: 0;
-    -webkit-animation: fillOpacity 1s 2.5s ease-out 1;
-    animation: fillOpacity 1s 2.5s ease-out 1;
-}
-
-#screenCase, #Bottom, #Screen {
-    stroke-dasharray: 2027.109619140625;
-    stroke-dashoffset: 2027.109619140625;
-    -webkit-animation: screenDash 3s ease-in infinite alternate;
-    animation: screenDash 3s ease-in infinite alternate;
-}
+@media screen and (max-width: 600px) {
 
 
-@keyframes screenDash {
-  from {
-    stroke-dashoffset: 2027.109619140625;
-  }
-  to {
-    stroke-dashoffset: 0;
-  }
-}
+    .jumbotron {
+        display: table;
+        height: 100vh;
+        width: 100%;
+        margin: 0px 0px 0px 0px;
+        text-align: center;
+        background: #b13b3b;
+        z-index: 100;
+        color: #fff;
+    }
 
-@-webkit-keyframes screenDash {
-  from {
-    stroke-dashoffset: 2027.109619140625;
-  }
-  to {
-    stroke-dashoffset: 0;
-  }
-}
+    .jumbotron .container {
+        display: table-cell;
+        vertical-align: middle;
+    }
 
-#t, #h, #i, #n, #g, #Bass {
-    stroke-dasharray: 735.111572265625;
-    stroke-dashoffset: 735.111572265625;
-    -webkit-animation: thingDash 3s ease-in infinite alternate;
-    animation: thingDash 3s ease-in infinite alternate;
-}
+    .container svg {
+        height: 30vh;
+        margin: 0px 0px 0px 0px;
+        fill-opacity: 0;
+        -webkit-animation: fillOpacity 1s 2.5s ease-out 1;
+        animation: fillOpacity 1s 2.5s ease-out 1;
+    }
 
-
-@keyframes thingDash {
-  from {
-    stroke-dashoffset: 735.111572265625;
-  }
-  to {
-    stroke-dashoffset: 0;
-  }
-}
-
-@-webkit-keyframes thingDash {
-  from {
-    stroke-dashoffset: 735.111572265625;
-  }
-  to {
-    stroke-dashoffset: 0;
-  }
-}
-
-#iDot, #ellipsis-1, #ellipsis-2, #ellipsis-3 {
-    stroke-dasharray: 32.8542361247513;
-    stroke-dashoffset: 32.8542361247513;
-    -webkit-animation: dotDash 3s ease-in infinite alternate;
-    animation: dotDash 3s ease-in infinite alternate;
-}
+    #screenCase, #Bottom, #Screen {
+        stroke-dasharray: 2027.109619140625;
+        stroke-dashoffset: 2027.109619140625;
+        -webkit-animation: screenDash 3s ease-in infinite alternate;
+        animation: screenDash 3s ease-in infinite alternate;
+    }
 
 
-@keyframes dotDash {
-  from {
-    stroke-dashoffset: 32.8542361247513;
-  }
-  to {
-    stroke-dashoffset: 0;
-  }
-}
+    @keyframes screenDash {
+      from {
+        stroke-dashoffset: 2027.109619140625;
+      }
+      to {
+        stroke-dashoffset: 0;
+      }
+    }
 
-@-webkit-keyframes dotDash {
-  from {
-    stroke-dashoffset: 32.8542361247513;
-  }
-  to {
-    stroke-dashoffset: 0;
-  }
-}
+    @-webkit-keyframes screenDash {
+      from {
+        stroke-dashoffset: 2027.109619140625;
+      }
+      to {
+        stroke-dashoffset: 0;
+      }
+    }
 
-#Support {
-    stroke-dasharray: 492.7215576171875;
-    stroke-dashoffset: 492.7215576171875;
-    -webkit-animation: baseDash 3s ease-in infinite alternate;
-    animation: baseDash 3s ease-in infinite alternate;
-}
-
-
-@keyframes baseDash {
-  from {
-    stroke-dashoffset: 492.7215576171875;
-  }
-  to {
-    stroke-dashoffset: 0;
-  }
-}
-
-@-webkit-keyframes baseDash {
-  from {
-    stroke-dashoffset: 492.7215576171875;
-  }
-  to {
-    stroke-dashoffset: 0;
-  }
-}
-
-@keyframes fillOpacity {
-  from {
-    fill-opacity: 0;
-    stroke-opacity: 1;
-  }
-  to {
-    fill-opacity: 1;
-    stroke-opacity: 0;
-  }
-}
-
-@-webkit-keyframes fillOpacity {
-  from {
-    fill-opacity: 0;
-    stroke-opacity: 1;
-  }
-  to {
-    fill-opacity: 1;
-    stroke-opacity: 0;
-  }
-}
-
-.filled .container svg {
-    fill-opacity: 1;
-    stroke-opacity: 0;
-}
-
-.sub-head {
-    overflow: visible;
-    text-align: center;
-    width: 100%;
-    height: 100vh;
-    background: #1377B0;
-}
-
-.sub-head .box{
-    opacity: 0;
-    transition: opacity 1s .3s linear;
-}
+    #t, #h, #i, #n, #g, #Bass {
+        stroke-dasharray: 735.111572265625;
+        stroke-dashoffset: 735.111572265625;
+        -webkit-animation: thingDash 3s ease-in infinite alternate;
+        animation: thingDash 3s ease-in infinite alternate;
+    }
 
 
-.check .sub-head .box{
-    opacity: 1;
+    @keyframes thingDash {
+      from {
+        stroke-dashoffset: 735.111572265625;
+      }
+      to {
+        stroke-dashoffset: 0;
+      }
+    }
+
+    @-webkit-keyframes thingDash {
+      from {
+        stroke-dashoffset: 735.111572265625;
+      }
+      to {
+        stroke-dashoffset: 0;
+      }
+    }
+
+    #iDot, #ellipsis-1, #ellipsis-2, #ellipsis-3 {
+        stroke-dasharray: 32.8542361247513;
+        stroke-dashoffset: 32.8542361247513;
+        -webkit-animation: dotDash 3s ease-in infinite alternate;
+        animation: dotDash 3s ease-in infinite alternate;
+    }
+
+
+    @keyframes dotDash {
+      from {
+        stroke-dashoffset: 32.8542361247513;
+      }
+      to {
+        stroke-dashoffset: 0;
+      }
+    }
+
+    @-webkit-keyframes dotDash {
+      from {
+        stroke-dashoffset: 32.8542361247513;
+      }
+      to {
+        stroke-dashoffset: 0;
+      }
+    }
+
+    #Support {
+        stroke-dasharray: 492.7215576171875;
+        stroke-dashoffset: 492.7215576171875;
+        -webkit-animation: baseDash 3s ease-in infinite alternate;
+        animation: baseDash 3s ease-in infinite alternate;
+    }
+
+
+    @keyframes baseDash {
+      from {
+        stroke-dashoffset: 492.7215576171875;
+      }
+      to {
+        stroke-dashoffset: 0;
+      }
+    }
+
+    @-webkit-keyframes baseDash {
+      from {
+        stroke-dashoffset: 492.7215576171875;
+      }
+      to {
+        stroke-dashoffset: 0;
+      }
+    }
+
+    @keyframes fillOpacity {
+      from {
+        fill-opacity: 0;
+        stroke-opacity: 1;
+      }
+      to {
+        fill-opacity: 1;
+        stroke-opacity: 0;
+      }
+    }
+
+    @-webkit-keyframes fillOpacity {
+      from {
+        fill-opacity: 0;
+        stroke-opacity: 1;
+      }
+      to {
+        fill-opacity: 1;
+        stroke-opacity: 0;
+      }
+    }
+
+    .filled .container svg {
+        fill-opacity: 1;
+        stroke-opacity: 0;
+    }
+
+    .sub-head {
+        background: #1d1d1d;
+        heigh: 20vh;
+        width: 100%;
+    }
+
+    .sub-head svg {
+        width: 15%;
+        height: 15%;
+        stroke-opacity: 0;
+    }
+
+    .sub-head #Checkmark {
+        fill: #fff;
+    }
 }
