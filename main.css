@@ -47,7 +47,7 @@
   }
 }
 
-#t, #h, #i, #n, #g, #Bass {
+#t, #h, #i, #n, #g, #Base {
     stroke-dasharray: 735.111572265625;
     stroke-dashoffset: 735.111572265625;
     -webkit-animation: thingDash 3s ease-in infinite alternate;

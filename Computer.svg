@@ -11,7 +11,7 @@
                 </mask>
                 <use id="Support" stroke="#FFFFFF" fill="#ECECEC" xlink:href="#path-1"></use>
                 <path d="M230.164062,423 L230.164062,481.822266 L380,423 L230.164062,423 Z" id="Shadow" fill="#DBDBDB" mask="url(#mask-2)"></path>
-                <rect id="Bass" stroke="#FFFFFF" fill="#F9F9F9" x="193.5" y="484" width="224" height="14" rx="3"></rect>
+                <rect id="Base" stroke="#FFFFFF" fill="#F9F9F9" x="193.5" y="484" width="224" height="14" rx="3"></rect>
                 <rect id="screenCase" stroke="#FFFFFF" fill="#000000" x="0" y="0" width="611" height="423" rx="22"></rect>
                 <path d="M589.006313,423 L21.9936867,423 C11.212879,423 2.24375961,415.239596 0.362845151,405 L0,362 L611,362 L611,405 C608.756876,415.240524 599.789102,423 589.006313,423 Z" id="Bottom" stroke="#FFFFFF" fill="#F9F9F9"></path>
                 <path d="M27,27 L27,335 L584,335 L584,27 L27,27 Z" id="Screen" stroke="#FFFFFF" fill="#1B1B1B"></path>
