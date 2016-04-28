@@ -1,4 +1,5 @@
 $(document).ready(function() {
+    alert("ADRIAN GOMES");
     $(this).scrollTop(0);
     setTimeout(function(){
         $( "body" ).addClass( "filled" )
