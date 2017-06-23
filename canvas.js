@@ -12,11 +12,15 @@ addEventListener('resize',  function() {
 });
 
 function rand(min, max) {
-	return Math.floor(Math.random() * (max - min + 1) + min);
+	return Math.random() * (max - min) + min;
+}
+
+function randInt(min, max) {
+	return Math.floor(rand(min, max));
 }
 
 function randColor() {
-    var colors = ['rgba(255,255,255,.5)','rgba(0,0,0,.35)'];
+    var colors = ['rgba(255,255,255,' + rand(0.3, 0.8) + ')','rgba(0,0,0,' + rand(0.3, 0.6) + ')'];
 	return colors[Math.floor(Math.random() * colors.length)];
 }
 
@@ -28,11 +32,11 @@ function Circle(x, y, r, color) {
 
 	this.update = function() {
         if(this.y < -this.r ) {
-            this.x = rand(this.r, canvas.width - this.r);
+            this.x = randInt(this.r, canvas.width - this.r);
             this.y = canvas.height + this.r;
         }
-        this.x += rand(-1,1);
-        this.y += rand(-50,2);
+        this.x += randInt(-2,2);
+        this.y += randInt(-50,2);
 		this.draw();
 	};
 
@@ -49,10 +53,10 @@ function Circle(x, y, r, color) {
 var circles;
 function init() {
     circles = [];
-    for(var i = 0; i < 100; i++) {
-        var r  = rand(5, 25);
-        var x  = rand(r, canvas.width - r);
-        var y  = rand(0, canvas.height - r);
+    for(var i = 0; i < randInt(50, 80); i++) {
+        var r  = randInt(5, 25);
+        var x  = randInt(r, canvas.width - r);
+        var y  = randInt(0, canvas.height - r);
         circles.push(new Circle(x, y, r, randColor()));
     }
 }

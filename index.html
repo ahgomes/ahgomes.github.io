@@ -11,17 +11,17 @@
         <div class="slider">
             <ul class="slideCounter">
                 <li class="link goToA active_link">
-                    <a href="#adrian" onclick="linkChange(0)">
+                    <a onclick="linkChange(0)">
                         <span></span>
                     </a>
                 </li>
                 <li class="link goToH inactive_link">
-                    <a href="#hugo" onclick="linkChange(1)">
+                    <a onclick="linkChange(1)">
                         <span></span>
                     </a>
                 </li>
                 <li class="link goToG inactive_link">
-                    <a href="#gomes" onclick="linkChange(2)">
+                    <a onclick="linkChange(2)">
                         <span></span>
                     </a>
                 </li>
@@ -50,7 +50,7 @@
                 page = 0;
                 sliding = false;
 
-                switch (window.location.hash) {
+                /*switch (window.location.hash) {
                     case '#adrian':
                         sansAnimation(0, linkChange(0));
                         break;
@@ -61,7 +61,7 @@
                         sansAnimation(2, linkChange(2));
                         break;
                     default:
-                }
+                }*/
             };
 
             function linkChange(i) {
@@ -69,7 +69,7 @@
                     sliding = true;
                     changeSlide(i, (page < i), Math.abs(page - i));
                     page = i;
-                    window.location.hash = pages[page].slice(1, pages[page].length);
+                    //window.location.hash = pages[page].slice(1, pages[page].length);
                 }
             }
 
@@ -89,13 +89,13 @@
                     page--;
                     sliding = true;
                     changeSlide(page, false, 1);
-                    window.location.hash = pages[page].slice(1, pages[page].length);
+                    //window.location.hash = pages[page].slice(1, pages[page].length);
                 }
                 if (e.deltaY > 40 && page < 2 && !sliding) {
                     page++;
                     sliding = true;
                     changeSlide(page, true, 1);
-                    window.location.hash = pages[page].slice(1, pages[page].length);
+                    //window.location.hash = pages[page].slice(1, pages[page].length);
                 }
             };
 
