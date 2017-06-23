@@ -1,11 +1,144 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
     <head>
-        <title>thing...</title>
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>AHG</title>
+        <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700,900" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="main.css">
     </head>
     <body>
-        Adrian H Gomes
+        <div class="slider">
+            <ul class="slideCounter">
+                <li class="link goToA active_link">
+                    <a href="#adrian" onclick="linkChange(0)">
+                        <span></span>
+                    </a>
+                </li>
+                <li class="link goToH inactive_link">
+                    <a href="#hugo" onclick="linkChange(1)">
+                        <span></span>
+                    </a>
+                </li>
+                <li class="link goToG inactive_link">
+                    <a href="#gomes" onclick="linkChange(2)">
+                        <span></span>
+                    </a>
+                </li>
+            </ul>
+            <div class="slide adrian active_slide" id="adrian">
+                <h1>Adrian</h1>
+            </div>
+            <div class="slide hugo inactive_slide_bottom" id="hugo">
+                <h1>Hugo</h1>
+            </div>
+            <div class="slide gomes inactive_slide_bottom" id="gomes">
+                <h1>Gomes</h1>
+            </div>
+            <div class="floater"></div>
+        </div>
+        <script type="text/javascript">
+            var pages;
+            var page;
+            var links;
+            var sliding;
+
+            window.onload = function() {
+                pages = ['.adrian', '.hugo', '.gomes'];
+                links = ['.goToA', '.goToH', '.goToG'];
+                page = 0;
+                sliding = false;
+
+                switch (window.location.hash) {
+                    case '#adrian':
+                        sansAnimation(0, linkChange(0));
+                        break;
+                    case '#hugo':
+                        sansAnimation(1, linkChange(1));
+                        break;
+                    case '#gomes':
+                        sansAnimation(2, linkChange(2));
+                        break;
+                    default:
+                }
+            };
+
+            function linkChange(i) {
+                if (!sliding) {
+                    sliding = true;
+                    changeSlide(i, (page < i), Math.abs(page - i));
+                    page = i;
+                    window.location.hash = pages[page].slice(1, pages[page].length);
+                }
+            }
+
+            window.onwheel = function(e) {
+                var fltr = document.querySelector('.floater');
+                if (page < 2) {
+                    fltr.style.display = 'block';
+                    fltr.style.bottom = e.deltaY - 32 + 'px';
+                    setTimeout(function() {
+                        fltr.style.bottom = '-32px';
+                    }, 200);
+                } else {
+                    fltr.style.display = 'none';
+                }
+
+                if (e.deltaY < -40 && page > 0 && !sliding) {
+                    page--;
+                    sliding = true;
+                    changeSlide(page, false, 1);
+                    window.location.hash = pages[page].slice(1, pages[page].length);
+                }
+                if (e.deltaY > 40 && page < 2 && !sliding) {
+                    page++;
+                    sliding = true;
+                    changeSlide(page, true, 1);
+                    window.location.hash = pages[page].slice(1, pages[page].length);
+                }
+            };
+
+            function changeSlide(p, down, dist) {
+                if(dist != 0) {
+                    if(dist > 1) {
+                        p += (down) ? -1 : 1;
+                        page = p;
+                    }
+
+                    var nextPage = document.querySelector(pages[p]);
+                    nextPage.classList.add('active_slide');
+                    nextPage.classList.remove((down) ? 'inactive_slide_bottom' : 'inactive_slide_top');
+
+                    var currentPage = document.querySelector(pages[(down) ? p - 1 : p + 1]);
+                    currentPage.classList.remove('active_slide');
+                    currentPage.classList.add((down) ? 'inactive_slide_top' : 'inactive_slide_bottom');
+
+                    var nextLink = document.querySelector(links[p]);
+                    nextLink.classList.add('active_link');
+                    nextLink.classList.remove('inactive_link');
+
+                    var currentLink = document.querySelector(links[(down) ? p - 1 : p + 1]);
+                    currentLink.classList.remove('active_link');
+                    currentLink.classList.add('inactive_link');
+
+                    if(dist > 1) {
+                        page += (down) ? 1 : -1;
+                        changeSlide(page, down, 1);
+                    }
+                }
+
+                setTimeout(function() {
+                    sliding = false;
+                }, 500);
+            }
+
+            function sansAnimation(i, a) {
+                document.querySelectorAll('.slide')[i].style.transition = 'none';
+                a;
+                setTimeout(function() {
+                    document.querySelectorAll('.slide')[i].style.transition = 'top 500ms ease';
+                }, 10);
+            }
+        </script>
     </body>
 </html>
