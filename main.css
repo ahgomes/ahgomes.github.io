@@ -90,6 +90,8 @@ body {
     border-radius: 50%;
     border: 2px solid #fff;
     box-shadow: 2px 2px rgba(0,0,0,.5);
+    cursor: pointer;
+    transition: background 200ms ease;
 }
 
 .link a span:hover {
@@ -110,12 +112,13 @@ body {
 
 .floater {
     position: fixed;
-    bottom: -32px;
+    top: 100%;
     right: 0;
     width: 100%;
-    height: 32px;
-    background: rgba(255,255,255,.5);
-    transition: bottom 200ms;
+    height: 100px;
+    z-index: 990;
+    border-radius: 50%;
+    transition: top 200ms;
 }
 
 canvas {
@@ -123,4 +126,38 @@ canvas {
     top: 0;
     left: 0;
     z-index: 900;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    padding: 10px 10px;
+    z-index: 1000;
+    width: 100%;
+    height: 52px;
+    //background: #fff;
+}
+
+.github {
+    float: right;
+    width: 32px;
+    height: 32px;
+    padding: 10px;
+    //background: #f00;
+}
+
+.github svg {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    transition: all 200ms ease;
+    -webkit-transition: all 400ms ease;
+}
+
+.github:hover > svg {
+    margin-top: -5px;
+    margin-left: -5px;
+    fill: #fff;
+    box-shadow: 5px 5px rgba(0,0,0,0.5);
 }
