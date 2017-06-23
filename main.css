@@ -117,3 +117,10 @@ body {
     background: rgba(255,255,255,.5);
     transition: bottom 200ms;
 }
+
+canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 900;
+}
