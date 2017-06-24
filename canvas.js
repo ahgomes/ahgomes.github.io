@@ -11,6 +11,17 @@ addEventListener('resize',  function() {
 	init();
 });
 
+var isPaused = false;
+
+window.onblur = function() {
+    isPaused = true;
+};
+
+window.onfocus = function() {
+    isPaused = false;
+	animate();
+};
+
 function rand(min, max) {
 	return Math.random() * (max - min) + min;
 }
@@ -36,7 +47,7 @@ function Circle(x, y, r, color) {
             this.y = canvas.height + this.r;
         }
         this.x += randInt(-2,2);
-        this.y += randInt(-50,2);
+        this.y += randInt(-50,10);
 		this.draw();
 	};
 
@@ -50,21 +61,27 @@ function Circle(x, y, r, color) {
 	};
 }
 
-var circles;
+var bubbles;
 function init() {
-    circles = [];
-    for(var i = 0; i < randInt(50, 80); i++) {
+    bubbles = [];
+	var bubbleNum = randInt((canvas.width * 0.02), (canvas.width * 0.04));
+    for(var i = 0; i < bubbleNum; i++) {
         var r  = randInt(5, 25);
         var x  = randInt(r, canvas.width - r);
         var y  = randInt(0, canvas.height - r);
-        circles.push(new Circle(x, y, r, randColor()));
+        bubbles.push(new Circle(x, y, r, randColor()));
     }
 }
 
 function animate() {
-	requestAnimationFrame(animate);
 	c.clearRect(0, 0, canvas.width, canvas.height);
-    for (var i = 0; i < circles.length; i++) circles[i].update();
+    for (var i = 0; i < bubbles.length; i++) bubbles[i].update();
+	requestAnimationFrame(function() {
+		if(!isPaused) {
+			animate();
+		}
+	});
+
 }
 
 init();
