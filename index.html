@@ -45,7 +45,7 @@
         </div>
         <canvas></canvas>
         <footer>
-            <a class="github" href="https://github.com/ahgomes" target="_blank">
+            <a class="github" href="https://github.com/ahgomes/ahgomes.github.io" target="_blank">
                 <svg aria-hidden="true" version="1.1" viewbox="0 0 16 16"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg>
             </a>
         </footer>
@@ -62,6 +62,35 @@
                 page = 0;
                 sliding = false;
             };
+
+            class FixedLengthQueue {
+                constructor(maxLength) {
+                    this.maxLength = maxLength;
+                    this._elements = new Array(this.maxLength);
+                }
+
+                enqueue(el) {
+                    this._elements.push(el);
+                    return this._elements.shift();
+                }
+
+                dequeue() {
+                    this._elements.push(null);
+                    return this._elements.shift();
+                }
+
+                toList() {
+                    return this._elements;
+                }
+
+                static fromList(list) {
+                    var flqueue = new FixedLengthQueue(list.length);
+                    for (let i = 0; i < list.length; i++) {
+                        flqueue.enqueue(list[i]);
+                    }
+                    return flqueue;
+                }
+            }
 
             function linkChange(i) {
                 if (!sliding) {
@@ -115,7 +144,7 @@
 
                 setTimeout(function() {
                     sliding = false;
-                }, 700);
+                }, 500);
             }
 
             var mouse = {
@@ -170,8 +199,10 @@
 
             var flip = 0;
             var body = document.querySelector('body');
+            var password = 'cvhdrtfy';
+            var passwordQueue = new FixedLengthQueue(password.length);
 
-            window.onkeypress = function(e) {
+            window.onkeydown = function(e) {
                 switch (key(e)) {
                     case 33:
                     case 34:
@@ -188,6 +219,11 @@
                             changeSlide(page, true, 1);
                         }
                         break;
+                }
+            }
+
+            window.onkeypress = function(e) {
+                switch (key(e)) {
                     case 97:
                         linkChange(0);
                         break;
@@ -198,24 +234,33 @@
                         linkChange(1);
                         break;
                     case 102:
-                        if(flip == 0) {
-                            body.style.filter = 'hue-rotate(90deg) invert(1)';
-                            body.style.transform = 'scale(-1, 1)';
-                            flip++;
-                        } else if(flip == 1) {
-                            body.style.filter = 'hue-rotate(180deg) invert(0)';
-                            body.style.transform = 'scale(-1, -1)';
-                            flip++;
-                        } else if(flip == 2) {
-                            body.style.filter = 'hue-rotate(270deg) invert(1)';
-                            body.style.transform = 'scale(1, -1)';
-                            flip++;
-                        } else {
-                            body.style.filter = 'unset';
-                            body.style.transform = 'scale(1, 1)';
-                            flip = 0;
-                        }
+                        flipScreen();
                         break;
+                }
+                passwordQueue.enqueue(String.fromCharCode(key(e)));
+                console.log(passwordQueue.toList().join(''));
+                if(passwordQueue.toList().join('') == password) {
+                    alert('HI');
+                }
+            }
+
+            function flipScreen() {
+                if(flip == 0) {
+                    body.style.filter = 'hue-rotate(90deg) invert(1)';
+                    body.style.transform = 'scale(-1, 1)';
+                    flip++;
+                } else if(flip == 1) {
+                    body.style.filter = 'hue-rotate(180deg) invert(0)';
+                    body.style.transform = 'scale(-1, -1)';
+                    flip++;
+                } else if(flip == 2) {
+                    body.style.filter = 'hue-rotate(270deg) invert(1)';
+                    body.style.transform = 'scale(1, -1)';
+                    flip++;
+                } else {
+                    body.style.filter = 'unset';
+                    body.style.transform = 'scale(1, 1)';
+                    flip = 0;
                 }
             }
 
