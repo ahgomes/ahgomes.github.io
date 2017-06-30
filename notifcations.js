@@ -46,9 +46,8 @@ class Notification {
                 '<button class="yes" onclick="' + this.yesAct + '">yes</button>'
                 :
                 '<b>' + this.message + '</b>' +
-                '<div>' +
                 '<button class="yes" onclick="' + this.yesAct + '">yes</button>'
-                + '<button class="no" onclick="' + this.noAct + '">no</button>' + '</div>';
+                + '<button class="no" onclick="' + this.noAct + '">no</button>';
                 break;
             case 'typeable':
                 this.note.innerHTML = '<b>' + this.message + '</b>' +
@@ -66,8 +65,9 @@ class Notification {
     animate(open) {
         if (!open) {
             this.note.style.transform = 'rotate(0) scale(1)';
+            this.note.style.webkitTransform = 'rotate(0) scale(1)';
         } else {
-            this.note.style.transform = 'rotate(0) scale(0.5)';
+            this.note.style.webkitTransform = 'rotate(0) scale(0.5)';
             this.note.style.opacity = '0';
         }
     }

@@ -1,7 +1,8 @@
 .notify {
     position: fixed;
     bottom: 0;
-    padding: 0;
+    padding: 0 0;
+    width: 330px;
     list-style-type: none;
     z-index: 1000000;
 }
@@ -38,8 +39,11 @@
     z-index: 1000000;
     transform: rotateX(90deg) scale(1);
     transform-origin: 50% 10px;
+    -webkit-transform: rotateX(90deg) scale(1);
+    -webkit-transform-origin: 50% 10px;
     opacity: 1;
     transition: all 400ms;
+    -webkit-transition: all 400ms;
 }
 
 .notify b {
@@ -115,6 +119,7 @@
 .typeable input:focus {
     border-color: #555;
     color: #555;
+    outline: none;
 }
 
 .typeable input::placeholder {
