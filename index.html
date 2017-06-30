@@ -6,6 +6,7 @@
         <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700,900" rel="stylesheet">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link rel="stylesheet" href="main.css">
+        <link rel="stylesheet" href="notify.css">
         <style class="titleShadow">
             .slide h1 {
                 text-shadow: 5px 5px rgba(0,0,0,.2),
@@ -15,40 +16,43 @@
         </style>
     </head>
     <body>
-        <div class="slider">
-            <ul class="slideCounter">
-                <li class="link goToA active_link">
-                    <a onclick="linkChange(0)">
-                        <span></span>
-                    </a>
-                </li>
-                <li class="link goToH inactive_link">
-                    <a onclick="linkChange(1)">
-                        <span></span>
-                    </a>
-                </li>
-                <li class="link goToG inactive_link">
-                    <a onclick="linkChange(2)">
-                        <span></span>
-                    </a>
-                </li>
-            </ul>
-            <div class="slide adrian active_slide" id="adrian">
-                <h1>Adrian</h1>
+        <div class="fullPage">
+            <div class="slider">
+                <ul class="slideCounter">
+                    <li class="link goToA active_link">
+                        <a onclick="linkChange(0)">
+                            <span></span>
+                        </a>
+                    </li>
+                    <li class="link goToH inactive_link">
+                        <a onclick="linkChange(1)">
+                            <span></span>
+                        </a>
+                    </li>
+                    <li class="link goToG inactive_link">
+                        <a onclick="linkChange(2)">
+                            <span></span>
+                        </a>
+                    </li>
+                </ul>
+                <div class="slide adrian active_slide" id="adrian">
+                    <h1>Adrian</h1>
+                </div>
+                <div class="slide hugo inactive_slide_bottom" id="hugo">
+                    <h1>Hugo</h1>
+                </div>
+                <div class="slide gomes inactive_slide_bottom" id="gomes">
+                    <h1>Gomes</h1>
+                </div>
             </div>
-            <div class="slide hugo inactive_slide_bottom" id="hugo">
-                <h1>Hugo</h1>
-            </div>
-            <div class="slide gomes inactive_slide_bottom" id="gomes">
-                <h1>Gomes</h1>
-            </div>
+            <canvas></canvas>
+            <footer>
+                <a class="github" href="https://github.com/ahgomes/ahgomes.github.io" target="_blank">
+                    <svg aria-hidden="true" version="1.1" viewbox="0 0 16 16"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg>
+                </a>
+            </footer>
         </div>
-        <canvas></canvas>
-        <footer>
-            <a class="github" href="https://github.com/ahgomes/ahgomes.github.io" target="_blank">
-                <svg aria-hidden="true" version="1.1" viewbox="0 0 16 16"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg>
-            </a>
-        </footer>
+        <script src="notifcations.js" charset="utf-8"></script>
         <script type="text/javascript">
             var pages;
             var page;
@@ -198,7 +202,7 @@
             }
 
             var flip = 0;
-            var body = document.querySelector('body');
+            var body = document.querySelector('.fullPage');
             var password = 'cvhdrtfy';
             var passwordQueue = new FixedLengthQueue(password.length);
 
@@ -236,12 +240,155 @@
                     case 102:
                         flipScreen();
                         break;
+                    case 100:
+
+                        break;
                 }
                 passwordQueue.enqueue(String.fromCharCode(key(e)));
-                console.log(passwordQueue.toList().join(''));
                 if(passwordQueue.toList().join('') == password) {
-                    alert('HI');
+                    script(0);
+                    /*notify({
+                        message: 'Hi',
+                        type: 'btn',
+                        location: 'right',
+                        rude: true,
+                        btnName: 'btn'
+                    });
+                    notify('Hello','text', 'left', true, 'btn');
+                    Hello? Did you need something? No? Okay, well I\'ll be here if you need me. You know how to call. Bye! GOOD LUCK!!*/
                 }
+            }
+
+            function script(state) {
+                var start = [
+                    ['Hello?', 'text'],
+                    ['Did you need something?', 'yesorno'],
+                ];
+
+                var noLines = [
+                    ['No?', 'text']
+                ];
+
+                var yesLines = [
+                    ['You do!', 'text'],
+                    ['Oh gosh!', 'text'],
+                    ['Yay', 'text'],
+                    ['OK', 'text'],
+                    ['OK', 'text'],
+                    ['How can I help you?', 'typeable'],
+
+                ];
+
+                var yesLines_Confirmed = [
+                    ['Oh great', 'text'],
+                    ['I\'m on it', 'text'],
+                    ['Oh wait', 'text'],
+                    ['What did you want again?', 'text'],
+                    ['I think I got too exited', 'text'],
+                    ['Sorry, I\'m bad at this', 'text'],
+                    ['Maybe I should go', 'text']
+                ];
+
+                var yesLines_Denied = [
+                    ['No?', 'text'],
+                    ['Oh', 'text'],
+                    ['OK', 'text'],
+                    ['How can I help you?', 'typeable']
+                ];
+
+                var end = [
+                    ['OK', 'text'],
+                    ['Well I\'ll be here if you need me', 'text'],
+                    ['You know how to call', 'text'],
+                    ['Bye!', 'text'],
+                    ['GOOD LUCK!!', 'text']
+                ];
+
+                switch (state) {
+                    case 0:
+                        notify({
+                            message: start[0][0],
+                            type: start[0][1],
+                            end: 3000
+                        });
+                        setTimeout(function() {
+                            notify({
+                                message: start[1][0],
+                                type: start[1][1],
+                                yesAct: 'yes(this.parentNode, 2)',
+                                noAct: 'no(this.parentNode, 1)'
+                            });
+                        }, 500);
+                        break;
+                    case 1:
+                        notify({
+                            message: noLines[0][0],
+                            type: noLines[0][1],
+                            end: 3000
+                        });
+                        setTimeout(function() {
+                            script(5);
+                        }, 500);
+                        break;
+                    case 2:
+                        let _j = 0;
+                        for (let i = 0; i < 6; i++) {
+                            setTimeout(function() {
+                                notify({
+                                    message: yesLines[i][0],
+                                    type: yesLines[i][1],
+                                    submitAct: 'submit(this.parentNode)',
+                                    end: (i == 5) ? undefined : 3000
+                                });
+                            }, (i == 5) ? _j + 3000 : _j);
+                            _j += 500;
+                        }
+                        break;
+                    case 3:
+                        let _l = 0;
+                        for (let i = 0; i < yesLines_Confirmed.length; i++) {
+                            setTimeout(function() {
+                                notify({
+                                    message: yesLines_Confirmed[i][0],
+                                    type: yesLines_Confirmed[i][1],
+                                    end: 4000
+                                });
+                            }, _l);
+                            _l += 700;
+                        }
+                        setTimeout(function() {
+                            script(5);
+                        }, _l + 4000);
+                        break;
+                    case 4:
+                        let _y = 0;
+                        for (let i = 0; i < 4; i++) {
+                            setTimeout(function() {
+                                notify({
+                                    message: yesLines_Denied[i][0],
+                                    type: yesLines_Denied[i][1],
+                                    submitAct: 'submit(this.parentNode)',
+                                    end: (i == 3) ? undefined : 3000
+                                });
+                            }, (i == 3) ? _y + 3000 : _y);
+                            _y += 500;
+                        }
+                        break;
+                    case 5:
+                        let _m = 0;
+                        for (let i = 0; i < end.length; i++) {
+                            setTimeout(function() {
+                                notify({
+                                    message: end[i][0],
+                                    type: end[i][1],
+                                    end: 5000
+                                });
+                            }, _m);
+                            _m += 1000;
+                        }
+                        break;
+                }
+
             }
 
             function flipScreen() {
@@ -263,6 +410,41 @@
                     flip = 0;
                 }
             }
+
+            /*-------------------------------------------------------*/
+
+            /*function setCookie(cname,cvalue, exdays) {
+                var d = new Date();
+                d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+                var expires = 'expires=' + d.toGMTString();
+                document.cookie = cname + '=' + cvalue + '; ' + expires;
+            }
+
+            function getCookie(cname) {
+                var name = cname + '=';
+                var ca = document.cookie.split(';');
+                for(var i = 0; i < ca.length; i++) {
+                    var c = ca[i];
+                    while (c.charAt(0)==' ') c = c.substring(1);
+                    if (c.indexOf(name) == 0) {
+                        return c.substring(name.length, c.length);
+                    }
+                }
+                return '';
+            }
+
+            function checkCookie() {
+                var day = getCookie('dayType');
+                if (day == '') {
+                    return 0;
+                } else {
+                    return parseInt(day);
+                }
+            }
+
+            function eraseCookie(name) {
+                setCookie(name, '', -1);
+            }*/
 
         </script>
         <script src="canvas.js" charset="utf-8"></script>
