@@ -90,7 +90,7 @@ function notify(o) {
             note.animate(true);
             setTimeout(function() {
                 note.dismiss();
-            }, 401);
+            }, 410);
         }, o.end);
     }
 }
@@ -101,7 +101,7 @@ function yes(el, state) {
     setTimeout(function() {
         el.remove();
         script(state);
-    }, 401);
+    }, 410);
 
 }
 
@@ -111,7 +111,7 @@ function no(el, state) {
     setTimeout(function() {
         el.remove();
         script(state);
-    }, 401);
+    }, 410);
 
 }
 
@@ -127,5 +127,5 @@ function submit(el) {
             yesAct: 'yes(this.parentNode, 3)',
             noAct: 'no(this.parentNode, 4)'
         });
-    }, 401);
+    }, 410);
 }
