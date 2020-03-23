@@ -1,16 +1,16 @@
-var body = document.querySelector('body');
+let pg_body = document.querySelector('body');
 
-var left = document.createElement('ul');
+let left = document.createElement('ul');
 left.classList.add('notify', 'left');
-body.appendChild(left);
+pg_body.appendChild(left);
 
-var center = document.createElement('ul');
+let center = document.createElement('ul');
 center.classList.add('notify', 'center');
-body.appendChild(center);
+pg_body.appendChild(center);
 
-var right = document.createElement('ul');
+let right = document.createElement('ul');
 right.classList.add('notify', 'right');
-body.appendChild(right);
+pg_body.appendChild(right);
 
 
 class Notification {
@@ -79,7 +79,7 @@ class Notification {
 }
 
 function notify(o) {
-    var note = new Notification(o.message, o.type, o.location, o.rude, o.btnName, o.yesAct, o.noAct, o.btnAct, o.submitAct);
+    let note = new Notification(o.message, o.type, o.location, o.rude, o.btnName, o.yesAct, o.noAct, o.btnAct, o.submitAct);
     note.show();
     setTimeout(function() {
         note.animate(false);
@@ -116,7 +116,7 @@ function no(el, state) {
 }
 
 function submit(el) {
-    var helpTxt = el.childNodes[2].value;
+    let helpTxt = el.childNodes[2].value;
     el.style.transform = 'rotate(0) scale(0.5)';
     el.style.opacity = '0';
     setTimeout(function() {

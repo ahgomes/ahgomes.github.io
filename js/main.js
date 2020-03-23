@@ -1,8 +1,8 @@
-var pages;
-var page;
-var links;
-var sliding;
-var title;
+let pages;
+let page;
+let links;
+let sliding;
+let title;
 
 window.onload = function() {
     pages = ['.adrian', '.hugo', '.gomes'];
@@ -33,7 +33,7 @@ class FixedLengthQueue {
     }
 
     static fromList(list) {
-        var flqueue = new FixedLengthQueue(list.length);
+        let flqueue = new FixedLengthQueue(list.length);
         for (let i = 0; i < list.length; i++) {
             flqueue.enqueue(list[i]);
         }
@@ -69,19 +69,19 @@ function changeSlide(p, down, dist) {
             page = p;
         }
 
-        var nextPage = document.querySelector(pages[p]);
+        let nextPage = document.querySelector(pages[p]);
         nextPage.classList.add('active_slide');
         nextPage.classList.remove((down) ? 'inactive_slide_bottom' : 'inactive_slide_top');
 
-        var currentPage = document.querySelector(pages[(down) ? p - 1 : p + 1]);
+        let currentPage = document.querySelector(pages[(down) ? p - 1 : p + 1]);
         currentPage.classList.remove('active_slide');
         currentPage.classList.add((down) ? 'inactive_slide_top' : 'inactive_slide_bottom');
 
-        var nextLink = document.querySelector(links[p]);
+        let nextLink = document.querySelector(links[p]);
         nextLink.classList.add('active_link');
         nextLink.classList.remove('inactive_link');
 
-        var currentLink = document.querySelector(links[(down) ? p - 1 : p + 1]);
+        let currentLink = document.querySelector(links[(down) ? p - 1 : p + 1]);
         currentLink.classList.remove('active_link');
         currentLink.classList.add('inactive_link');
 
@@ -96,7 +96,7 @@ function changeSlide(p, down, dist) {
     }, 500);
 }
 
-var mouse = {
+let mouse = {
     x: innerWidth / 2,
     y: innerHeight / 2,
     xShift: 0,
@@ -107,7 +107,7 @@ var mouse = {
 
 window.onmousemove = function(e) {
 
-    var css = document.querySelector('.titleShadow');
+    let css = document.querySelector('.titleShadow');
 
     mouse.x = e.clientX;
     mouse.y = e.clientY;
@@ -143,10 +143,10 @@ function key(e) {
     return e.which || e.keyCode;
 }
 
-var flip = 0;
-var body = document.querySelector('.fullPage');
-var password = 'cvhdrtfy';
-var passwordQueue = new FixedLengthQueue(password.length);
+let flip = 0;
+let body = document.querySelector('.fullPage');
+let password = 'cvhdrtfy';
+let passwordQueue = new FixedLengthQueue(password.length);
 
 window.onkeydown = function(e) {
     switch (key(e)) {
@@ -193,16 +193,16 @@ window.onkeypress = function(e) {
 }
 
 function script(state) {
-    var start = [ //0
+    let start = [ //0
         ['Hello?', 'text'],
         ['Did you need something?', 'yesorno'],
     ];
 
-    var noLines = [ //1
+    let noLines = [ //1
         ['No?', 'text']
     ];
 
-    var yesLines = [ //2
+    let yesLines = [ //2
         ['You do!', 'text'],
         ['Oh gosh!', 'text'],
         ['Yay', 'text'],
@@ -212,7 +212,7 @@ function script(state) {
 
     ];
 
-    var yesLinesConfirmed = [  //3
+    let yesLinesConfirmed = [  //3
         ['Oh great', 'text'],
         ['I\'m on it', 'text'],
         ['Oh wait', 'text'],
@@ -222,14 +222,14 @@ function script(state) {
         ['Maybe I should go', 'text']
     ];
 
-    var yesLinesDenied = [  //4
+    let yesLinesDenied = [  //4
         ['No?', 'text'],
         ['Oh', 'text'],
         ['OK', 'text'],
         ['How can I help you?', 'typeable']
     ];
 
-    var end = [  //5
+    let end = [  //5
         ['OK', 'text'],
         ['Well I\'ll be here if you need me', 'text'],
         ['You know how to call', 'text'],
@@ -237,32 +237,32 @@ function script(state) {
         ['GOOD LUCK!!', 'text']
     ];
 
-    var onreturnNow = [  //6
+    let onreturnNow = [  //6
         ['Welcome back!!', 'text'],
         ['Great to see you again', 'text']
     ];
 
-    var onreturnLater = [ //7
+    let onreturnLater = [ //7
 
     ];
 
-    var start_rude = [  //8
+    let start_rude = [  //8
 
     ];
 
-    var turnoffDenied_rude = [ //9
+    let turnoffDenied_rude = [ //9
 
     ];
 
-    var end_rude = [  //10
+    let end_rude = [  //10
 
     ];
 
-    var onreturnNow_rude = [  //11
+    let onreturnNow_rude = [  //11
 
     ];
 
-    var onreturnLater_rude = [ //12
+    let onreturnLater_rude = [ //12
 
     ];
 
@@ -369,7 +369,7 @@ function script(state) {
 }
 
 function flipScreen() {
-    if(flip == 0) {
+    if (flip == 0) {
         body.style.filter = 'hue-rotate(90deg) invert(1)';
         body.style.transform = 'scale(-1, 1)';
         flip++;
@@ -391,16 +391,16 @@ function flipScreen() {
 /*-------------------------------------------------------*/
 
 function setCookie(cname, cvalue, exdays) {
-    var d = new Date();
+    let d = new Date();
     d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
-    var expires = 'expires=' + d.toGMTString();
+    let expires = 'expires=' + d.toGMTString();
     document.cookie = cname + '=' + cvalue + '; ' + expires;
 }
 
 function getCookie(cname) {
-    var name = cname + '=';
-    var c = document.cookie.split(';');
-    for(var i = 0; i < c.length; i++) {
+    let name = cname + '=';
+    let c = document.cookie.split(';');
+    for (let i = 0; i < c.length; i++) {
         while (c[i].charAt(0) == ' ') {
             c[i] = c[i].substring(1);
         }
@@ -413,7 +413,13 @@ function getCookie(cname) {
 }
 
 function checkCookie() {
-    var note = getCookie('noteStyle');
+    let accepted = (getCookie('accepted') == 'true');
+    if (!accepted) {
+        document.querySelector('.warning').style.top = '50px';
+        return -1;
+    }
+
+    let note = getCookie('noteStyle');
     if (note == 'nice') {
         return 6;
     } /*else if (note == 'niceLater') {
@@ -425,6 +431,13 @@ function checkCookie() {
     } else {
         return -1;
     }
+}
+
+document.querySelector('.warning').addEventListener('click', acceptCookies);
+
+function acceptCookies() {
+    document.querySelector('.warning').style.top = '-100%';
+    setCookie('accepted', 'true', 100);
 }
 
 function eraseCookie(cname) {
