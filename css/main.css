@@ -27,6 +27,10 @@ body {
     margin-bottom: 20px;
 }
 
+.warning p a {
+    color: #1db4d5;
+}
+
 .warning button {
     float: right;
     height: 30px;

@@ -390,6 +390,8 @@ function flipScreen() {
 
 /*-------------------------------------------------------*/
 
+let cookie_names = ['accepted', 'noteStyle'];
+
 function setCookie(cname, cvalue, exdays) {
     let d = new Date();
     d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
@@ -433,7 +435,7 @@ function checkCookie() {
     }
 }
 
-document.querySelector('.warning').addEventListener('click', acceptCookies);
+document.querySelector('.warning button').addEventListener('click', acceptCookies);
 
 function acceptCookies() {
     document.querySelector('.warning').style.top = '-100%';
@@ -442,4 +444,10 @@ function acceptCookies() {
 
 function eraseCookie(cname) {
     setCookie(cname, '', -1);
+}
+
+function resetCookies() {
+    for (let i = 0; i < cookie_names.length; i++)
+        eraseCookie(cookie_names[i]);
+    document.querySelector('#reset-message').innerHTML = '—  all cookies reset';
 }
