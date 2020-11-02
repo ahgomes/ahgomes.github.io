@@ -258,7 +258,6 @@ section span.nav:hover::after {
 .work ul li {
     text-align: center;
     margin-bottom: 30px;
-    cursor: pointer;
 }
 
 .work ul li a:hover img {
@@ -274,6 +273,7 @@ section span.nav:hover::after {
     display: block;
     height: 400px;
     width: 100%;
+    cursor: pointer;
 }
 
 .work ul li img {
