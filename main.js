@@ -25,14 +25,6 @@ onload = function() {
     window.scrollTo(0, 0)
 }
 
-document.querySelector('#name').onclick = function() {
-    window.scrollTo(0, 0)
-}
-
-document.querySelector('.landing span.button').onclick = function() {
-    window.scrollTo(0, window.innerHeight)
-}
-
 let wH = window.innerHeight;
 
 let border = document.querySelector('#border')
@@ -43,6 +35,18 @@ let name = document.querySelector('#name')
 let fsize = 15;
 let fsize_threshold = wH / 12;
 
+name.onclick = function() {
+    window.scrollTo(0, 0)
+}
+
+document.querySelector('.landing span.button').onclick = function() {
+    window.scrollTo(0, window.innerHeight)
+    fsize = 3
+    border_angle = 169
+    name.style.fontSize = fsize + 'vw'
+    border.style.transform = 'rotate(' + border_angle + 'deg)'
+}
+
 let left = document.querySelector('.left')
 let loff = left.offsetTop;
 let ltext = document.querySelector('.left h2')
@@ -51,7 +55,7 @@ let lsetting = 0
 
 let weboff = document.querySelector('.web').offsetTop + document.querySelector('.web').offsetHeight / 2
 let digoff = document.querySelector('.digital').offsetTop  + document.querySelector('.digital').offsetHeight / 2
-let phtoff = document.querySelector('.photo').offsetTop  + document.querySelector('.photo').offsetHeight / 2 
+let phtoff = document.querySelector('.photo').offsetTop  + document.querySelector('.photo').offsetHeight / 2
 
 window.addEventListener('scroll', function(e) {
     window.requestAnimationFrame(function() {
