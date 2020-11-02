@@ -346,12 +346,12 @@ span.b3 {
 
 span.p1 {
     top: 10%;
-    left: 90%;
+    left: calc(90% - 11px);
 }
 
 span.p2 {
     top: calc(10% - 12px);
-    left: calc(90% - 11px);
+    left: 90%;
 }
 
 span.p3 {
