@@ -53,7 +53,7 @@ body {
 
 section {
     height: 100vh;
-    width: 100%;
+    width: 100vw;
     padding: 20px;
     box-sizing: border-box;
 }
@@ -280,6 +280,8 @@ section span.nav:hover::after {
     height: 400px;
     width: 100%;
     object-fit: cover;
+    user-select: none;
+    pointer-events: none;
 }
 
 .work ul li h3 {
