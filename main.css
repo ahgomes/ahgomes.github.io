@@ -42,23 +42,13 @@ body {
     cursor: pointer;
 }
 
-#wink {
-    display: block;
-    position: fixed;
-    top: 6vh;
-    right: calc(10vw + 45px);
-    height: 10px;
-    width: 10px;
-    background: #f0f;
-}
-
 a {
     color: #000;
-    text-decoration: none;
 }
 
 a:hover {
     font-style: italic;
+    cursor: default;
 }
 
 a[href = ""] {
@@ -74,15 +64,6 @@ section {
     width: 100vw;
     padding: 20px;
     box-sizing: border-box;
-}
-
-section span.message {
-    display: block;
-    font-size: 12px;
-    writing-mode: vertical-rl;
-    white-space: nowrap;
-    overflow: hidden;
-    max-height: calc(100vh - 5px);
 }
 
 /*------------------------------
@@ -114,9 +95,23 @@ section span.message {
 }
 
 .landing span.message {
+    display: block;
     position: absolute;
     top: 5px;
     right: 5px;
+    font-size: 12px;
+    writing-mode: vertical-rl;
+    white-space: nowrap;
+    overflow: hidden;
+    max-height: calc(100vh - 5px);
+}
+
+.landing span.error {
+    display: none;
+    position: absolute;
+    bottom: 150px;
+    right: 50px;
+    width: 20vw;
 }
 
 .landing #circle {
@@ -132,270 +127,25 @@ section span.message {
     z-index: 2;
 }
 
-/*------------------------------
-    ABOUT PAGE
---------------------------------*/
-
-.about {
-    padding: 50vh;
-    height: auto;
-}
-
-.about p {
-    font-family: Source Code Pro, sans-serif;
-    width: 50vw;
-}
-
-.about p::after {
-    content: "";
-    display: block;
-    position: relative;
-    bottom: 60vh;
-    right: 2vw;
-    height: 70vh;
-    width: 50vw;
-    border: 1px solid rgba(0, 0, 0, 0.5);
-    transform: rotate(2deg) skewX(10deg);
-    animation: box-shake 200ms alternate infinite;
-}
-
-@keyframes box-shake {
-    from {
-        transform: rotate(2deg) skewX(9deg);
+@media (max-width: 640px) {
+    .landing {
+        display: none;
     }
-    to {
-        transform: rotate(2deg) skewX(10deg);
+
+    body::before {
+        content: "ADRIAN GOMES";
+        display: block;
+        width: 80vw;
+        margin: 20px auto;
+        font-size: 16vw;
+        font-weight: 900;
+        word-break: break-all;
     }
-}
 
-
-/*------------------------------
-    WORK PAGE
---------------------------------*/
-
-.work {
-    display: table;
-    height: auto;
-    margin-top: 30vh;
-    padding-top: 20vh;
-    box-sizing: content-box;
-}
-
-.work h1 {
-    text-align: center;
-    font-size: 24vw;
-    text-transform: lowercase;
-    overflow: hidden;
-    line-height: 12vw;
-}
-
-.work h2 {
-    font-family: Source Code Pro, sans-serif;
-    text-transform: uppercase;
-    font-size: 5vw;
-}
-
-.work span.message {
-    position: absolute;
-    top: calc(300vh + 5px);
-    right: 5px;
-}
-
-.work .right {
-    display: block;
-    float: right;
-    width: 50vw;
-    padding: 20px;
-    box-sizing: border-box;
-    height: auto;
-    font-family: Source Code Pro, sans-serif;
-}
-
-.work .right div {
-    height: auto;
-    padding: 20px;
-    box-sizing: border-box;
-    margin-bottom: 50px;
-}
-
-.work ul {
-    list-style-type: none;
-}
-
-.work ul li {
-    position: relative;
-}
-
-.work ul li a::before {
-    content: "~";
-}
-
-.work ul li a {
-    display: block;
-    text-decoration: none;
-    color: #000;
-    width: 100%;
-    font-size: 6vw;
-    cursor: pointer;
-    padding: 20px;
-    box-sizing: border-box;
-    text-shadow: 2px 2px 0 #f1f1f1;
-    word-wrap: break-word;
-    transition: all 300ms;
-}
-
-.work ul li img.h-img {
-    display: none;
-    position: absolute;
-    top: calc(50% - 125px);
-    right: 30%;
-    height: 250px;
-    width: 40%;
-    text-align: left;
-    text-indent: 20px;
-    font-size: 20px;
-    line-height: 40px;
-    border: 1px solid #000;
-    object-fit: none;
-    overflow: hidden;
-    mix-blend-mode: difference;
-    pointer-events: none;
-}
-
-@-moz-document url-prefix() {
-    .work ul li img.h-img {
-        filter: invert(100%);
+    body::after {
+        content: "I know this looks bad... cause it is :) pls come back later";
+        display: block;
+        width: 80vw;
+        margin: 20px auto;
     }
-}
-
-.work ul li:hover > a {
-    font-style: italic;
-}
-
-.work ul li:hover > .h-img {
-    display: block;
-}
-
-.work .left {
-    position: sticky;
-    top: 35vh;
-    left: 20px;
-    width: 50vw;
-    padding: 20px;
-    box-sizing: border-box;
-    text-align: center;
-    transition: all 200ms;
-    z-index: 300;
-}
-
-.work .left.lfix {
-    position: fixed;
-    top: 45vh;
-}
-
-.work .left.labs {
-    position: absolute;
-    top: 45vh;
-}
-
-span.frame {
-    display: block;
-    height: 200px;
-    width: 40%;
-    margin: 0 auto;
-    padding: 5px 10px;
-    text-align: left;
-    border: 1px solid #000;
-}
-
-span.btn, span.pixel, span.edge {
-    display: block;
-    position: relative;
-    height: 10px;
-    width: 10px;
-    border: 1px solid #000;
-    transition: all 500ms;
-}
-
-span.b1 {
-    top: 0;
-    left: 0;
-}
-
-span.b2 {
-    top: -12px;
-    left: 16px;
-}
-
-span.b3 {
-    top: -24px;
-    left: 32px;
-}
-
-span.p1 {
-    top: 10%;
-    left: calc(90% - 11px);
-}
-
-span.p2 {
-    top: calc(10% - 12px);
-    left: 90%;
-}
-
-span.p3 {
-    top: calc(10% - 13px);
-    left: 90%;
-}
-
-span.e1 {
-    top: 0;
-    left: 0;
-}
-
-span.e2 {
-    top: -12px;
-    left: calc(100% - 12px);
-}
-
-span.e3 {
-    top: calc(100% - 36px);
-    left: calc(100% - 12px);
-}
-
-span.b1, span.p1, span.e1 {
-    background: #f00;
-}
-
-span.b2, span.p2, span.e2 {
-    background: #ff0;
-}
-
-span.b3, span.p3, span.e3 {
-    background: #0f0;
-}
-
-/*------------------------------
-    FOOTER
---------------------------------*/
-
-footer {
-    display: flex;
-    height: 50px;
-    width: 100%;
-    margin: 50px 0 20px 0;
-    padding: 20px;
-    box-sizing: border-box;
-    border-top: 1px solid #000;
-}
-
-footer a {
-    flex: 1;
-    color: #000;
-    text-decoration: none;
-    text-align: center;
-    outline: none;
-}
-
-footer a:hover {
-    font-style: italic;
 }
